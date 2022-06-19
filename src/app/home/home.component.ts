@@ -28,8 +28,7 @@ export class HomeComponent implements OnInit {
     //   alert('Sua sessão expirou, faça o login novamente.')
     //   this.router.navigate(['/login'])
     // }
-
-    if (localStorage.getItem('token') == ''){
+    if (localStorage.getItem('token') == '' || localStorage.getItem('token') == null){
       Swal.fire({
         icon: 'error',
         title: 'Oops...',

@@ -29,7 +29,7 @@ export class JogarComponent implements OnInit {
     //   this.idQuiz = obj.id;
     // });
 
-    if (localStorage.getItem('token') == ''){
+    if (localStorage.getItem('token') == '' || localStorage.getItem('token') == null){
       Swal.fire({
         icon: 'error',
         title: 'Oops...',

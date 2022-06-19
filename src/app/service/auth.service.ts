@@ -53,7 +53,7 @@ export class AuthService {
   logado() {
     let ok = false
 
-    if (localStorage.getItem('token') != '') {
+    if (localStorage.getItem('token') != '' && localStorage.getItem('token') != null) {
       ok = true
     }
 

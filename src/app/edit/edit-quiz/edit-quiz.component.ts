@@ -24,7 +24,7 @@ export class EditQuizComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if (localStorage.getItem('token') == ''){
+    if (localStorage.getItem('token') == '' || localStorage.getItem('token') == null){
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
