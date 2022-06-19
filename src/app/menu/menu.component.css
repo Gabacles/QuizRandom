@@ -1,0 +1,23 @@
+.fs-16 {
+  font-size: 16pt;
+}
+
+.bg-color {
+  background-color: #233d64;
+}
+
+.tm-img {
+  width: 70px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.ml-50 {
+  margin-left: 50%;
+}
+
+@media only screen and (max-device-width: 700px) {
+  .ml-50 {
+    margin-left: 0;
+  }
+}

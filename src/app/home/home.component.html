@@ -1,0 +1,62 @@
+
+<!-- Container home -->
+<div class="container-fluid">
+  <div class="row bg-quiz d-flex align-items-center">
+
+    <div class="col-md-12">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-12 d-flex justify-content-center ">
+          <img class="img-fluid" src="../../assets/img/all-quiz2.png" alt="">
+        </div>
+      </div>
+
+      <div class="row d-flex justify-content-center mb-2">
+        <div class="col-md-6">
+          <div class="form-group d-flex busca">
+            <input [(ngModel)]="nome" class="form-control" type="text"
+              name="buscaQuiz" id="buscaQuiz"
+              placeholder="Digite o nome do quiz">
+              <button (click)="findQuizByNome()" class="btn btn-busca mb-4"
+              data-toggle="modal" data-target="#novaPostagem"><i class="fa fa-search" aria-hidden="true"></i></button>
+          </div>
+          <div class="d-flex justify-content-center mb-4">
+            <button class="btn btn-primary mt-3" data-toggle="modal"
+              data-target="#novaPostagem" routerLink="/cadastrar-quiz">Crie seu
+              quiz</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- /Container home -->
+
+<body class="fundo-site pb-5">
+
+  <div class="container pt-5">
+
+    <div class="card-columns">
+
+      <a [routerLink]="['/jogar', quiz.id]" class="card links mt-3"
+        *ngFor="let quiz of listaQuiz">
+        <div class="card-img-wrapper">
+          <img (error)="onImgError($event)" class="card-img-top img-quiz-tm"
+            src="{{quiz.foto}}" alt="Imagem de capa do card">
+        </div>
+
+        <div class="card-info">
+          <h2 class="card-title fonte text-light font-weight-bold">{{
+            quiz.titulo }}</h2>
+          <!-- <p class="font-weight-light font-italic shadow text-light">Criado por: {{quiz.usuario.nome}}</p> -->
+          <h6 class="font-weight-bold text-light">Criado por:
+            {{quiz.usuario.nome}}</h6>
+        </div>
+
+      </a>
+
+    </div>
+
+  </div>
+
+</body>

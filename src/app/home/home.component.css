@@ -1,0 +1,133 @@
+.img-quiz-tm {
+  /* max-height: 250px;
+  min-height: 250px; */
+  width: 100%;
+  height: 100%;
+}
+
+.bg-quiz {
+  background-image: url('../../assets/img/bg-site5.png');
+  background-size: auto;
+  background-repeat: no-repeat;
+}
+
+
+.fundo-site {
+  /* background: -webkit-linear-gradient(to right, #e8cbc0, #636fa4);
+    background: linear-gradient(to right, #95a2e3, #636fa4); */
+  background-image: url('../../assets/img/fundo-site6.png');
+  background-size: cover;
+}
+
+.links {
+  text-decoration: none;
+}
+
+.bg-color {
+  background: -webkit-linear-gradient(to right, #443f3d, #2a314d);
+  background: linear-gradient(to right, #2a314d, #443f3d);
+}
+
+.fs-54 {
+font-size: 54pt;
+}
+
+.fs-18 {
+font-size: 18pt;
+}
+
+.fs-30 {
+  font-size: 30pt;
+  }
+
+.efeito{
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.efeito:hover{
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.fonte {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+}
+
+/* .efeito{
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.efeito:hover{
+  -webkit-filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
+  filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
+} */
+
+
+
+.card{
+  box-shadow: 10px 5px 5px rgb(47, 45, 45);
+  width: 22rem;
+  height: 16rem;
+  position: relative;
+
+}
+
+.card-img-wrapper{
+  width: 100%;
+  height: 100%;
+  background-color: #4b4b4b;
+  border-radius: 0.5rem;
+}
+
+.card-img-wrapper img{
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+  opacity: .8;
+  transition: opacity .5s;
+}
+
+.card:hover .card-img-wrapper img{
+  opacity: .5;
+}
+
+.card-info{
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  bottom: 0;
+  padding: 2rem;
+  text-shadow: 0.3rem 0.2rem 0.3rem rgba(0, 0, 0,0.6);
+  transition: all 0.5s;
+}
+
+.card-info p{
+  color: #eee;
+  font-weight: 400;
+  width:80%;
+  margin-bottom: 1.5rem;
+}
+
+.card:hover .card-info{
+  bottom: 2rem;
+  opacity: 1;
+  visibility: visible;
+}
+
+.busca {
+  position: relative;
+}
+
+.btn-busca {
+  position: absolute;
+  margin-left: 95%;
+}
+
+@media only screen and (max-device-width: 700px) {
+  .btn-busca {
+    margin-left: 90%;
+  }
+}

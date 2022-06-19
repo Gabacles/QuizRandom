@@ -1,0 +1,21 @@
+<div class="container mt-5 mb-5">
+
+  <h1 class="text-center">Minhas Criações</h1>
+  <hr>
+
+  <div class="card-columns">
+
+    <div class="card" style="width: 18rem;" *ngFor="let quiz of usuario.quiz">
+      <img (error)="onImgError($event)" class="card-img-top" src="{{quiz.foto}}"
+        alt="Imagem de capa do card">
+      <div class="card-body">
+        <h5 class="card-text text-center">{{quiz.titulo}}</h5>
+        <div class="text-center">
+          <a [routerLink]="['/editar-quiz', quiz.id]" class="card-link">Editar</a>
+          <a (click)="deleteButton(quiz.id)" class="card-link text-danger">Excluir</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

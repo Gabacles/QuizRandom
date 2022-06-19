@@ -1,0 +1,157 @@
+<div class="container mt-5 mb-5 d-flex justify-content-center">
+  <div class="card w-50">
+    <div class="d-flex justify-content-center"><img class="mt-3" src="../../assets/img/Novo quiz.png"
+        alt="Imagem de capa do card"></div>
+    <div class="row mt-5">
+      <div class="col-md-12 d-flex justify-content-center">
+        <div class="form-group">
+          <input [(ngModel)]="quiz.titulo" class="form-control" type="text" name="nomeQuiz" id="nomeQuiz"
+            placeholder="Título do quiz" *ngIf="ok == false">
+
+          <input [(ngModel)]="quiz.titulo" class="form-control" type="text" name="nomeQuiz" id="nomeQuiz"
+            placeholder="Título do quiz" *ngIf="ok" value="{{quiz.titulo}}" disabled="">
+        </div>
+      </div>
+
+      <div class="col-md-12 d-flex justify-content-center">
+        <div class="form-group">
+          <input [(ngModel)]="quiz.foto" class="form-control" type="text" name="fotoQuiz" id="fotoQuiz"
+            placeholder="Link da foto" *ngIf="ok == false">
+
+          <input [(ngModel)]="quiz.foto" class="form-control" type="text" name="fotoQuiz" id="fotoQuiz"
+            placeholder="Link da foto" *ngIf="ok" value="{{quiz.foto}}" disabled="">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="d-flex justify-content-center" *ngIf="ok == false">
+      <button (click)="cadastrarQuiz()" type="button" class="btn btn-primary mt-3 mb-3">
+        Confirmar
+      </button>
+    </div>
+
+    <!-- Botão para acionar modal -->
+    <div class="d-flex justify-content-center" *ngIf="ok">
+      <button type="button" class="btn btn-primary mt-3 mb-3" data-toggle="modal" data-target="#ExemploModalCentralizado">
+        Adicionar perguntas
+      </button>
+      <button (click)="salvar()" type="button" class="btn btn-success mt-3 mb-3 ml-2" *ngIf="contador >= 5">
+        Confirmar
+      </button>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog"
+  aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TituloModalCentralizado">Questão {{ contador }}</h5>
+        <button (click)="quantidadeMinima()" type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="form-group">
+              <label for="pergunta">Sua pergunta</label>
+              <input [(ngModel)]="pergunta.pergunta" class="form-control" type="text" name="pergunta" id="pergunta"
+                placeholder="Digite sua pergunta">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="foto">Foto</label>
+              <input [(ngModel)]="pergunta.foto" class="form-control" type="text" name="foto" id="foto"
+                placeholder="Link da foto">
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-md-10">
+            <div class="form-group">
+              <input [(ngModel)]="pergunta.resposta1" type="text" class="form-control" name="resposta1" id="resposta1"
+                placeholder="Primeira resposta">
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-check mt-2">
+              <input [(ngModel)]="correta" class="form-check-input" type="radio" name="correta" id="correta1"
+                value="opcao1">
+              <label class="form-check-label" for="correta1">
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-10">
+            <div class="form-group">
+              <input [(ngModel)]="pergunta.resposta2" type="text" class="form-control" name="resposta2" id="resposta2"
+                placeholder="Segunda resposta">
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-check mt-2">
+              <input [(ngModel)]="correta" class="form-check-input" type="radio" name="correta" id="correta2"
+                value="opcao2">
+              <label class="form-check-label" for="correta2">
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-10">
+            <div class="form-group">
+              <input [(ngModel)]="pergunta.resposta3" type="text" class="form-control" name="resposta3" id="resposta3"
+                placeholder="Terceira resposta">
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-check mt-2">
+              <input [(ngModel)]="correta" class="form-check-input" type="radio" name="correta" id="correta3"
+                value="opcao3">
+              <label class="form-check-label" for="correta3">
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-10">
+            <div class="form-group">
+              <input [(ngModel)]="pergunta.resposta4" type="text" class="form-control" name="resposta4" id="resposta4"
+                placeholder="Quarta resposta">
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-check mt-2">
+              <input [(ngModel)]="correta" class="form-check-input" type="radio" name="correta" id="correta4"
+                value="opcao4">
+              <label class="form-check-label" for="correta4">
+              </label>
+            </div>
+          </div>
+        </div>
+
+      </form>
+
+      </div>
+      <div class="modal-footer">
+        <button (click)="quantidadeMinima()" type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button (click)="cadastrarPergunta()" type="button" class="btn btn-primary">Próxima</button>
+      </div>
+    </div>
+  </div>
+</div>
