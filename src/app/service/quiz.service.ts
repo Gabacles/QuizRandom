@@ -23,33 +23,33 @@ export class QuizService {
 
   getAllQuiz(): Observable<Quiz[]>{
     this.refreshToken()
-    return this.http.get<Quiz[]>("http://localhost:8080/quizzes", this.token)
+    return this.http.get<Quiz[]>("https://quizrandom.herokuapp.com/quizzes", this.token)
   }
 
   getQuizById(id: number): Observable<Quiz> {
     this.refreshToken()
-    return this.http.get<Quiz>(`http://localhost:8080/quizzes/${id}`, this.token)
+    return this.http.get<Quiz>(`https://quizrandom.herokuapp.com/quizzes/${id}`, this.token)
   }
 
   getQuizByNome(nome: string): Observable<Quiz[]> {
     this.refreshToken()
-    return this.http.get<Quiz[]>(`http://localhost:8080/quizzes/titulo/${nome}`, this.token)
+    return this.http.get<Quiz[]>(`https://quizrandom.herokuapp.com/quizzes/titulo/${nome}`, this.token)
   }
 
   putQuiz(quiz: Quiz): Observable<Quiz> {
     this.refreshToken()
-    return this.http.put<Quiz>('http://localhost:8080/quizzes/atualizar', quiz, this.token)
+    return this.http.put<Quiz>('https://quizrandom.herokuapp.com/quizzes/atualizar', quiz, this.token)
   }
 
   deleteQuiz(id: number) {
     this.refreshToken()
-    return this.http.delete(`http://localhost:8080/quizzes/${id}`, this.token)
+    return this.http.delete(`https://quizrandom.herokuapp.com/quizzes/${id}`, this.token)
   }
 
   cadastrarQuiz(quiz: Quiz): Observable<Quiz> {
     this.refreshToken()
     return this.http.post<Quiz>(
-      'http://localhost:8080/quizzes/cadastrar',
+      'https://quizrandom.herokuapp.com/quizzes/cadastrar',
       quiz,
       this.token
     );
@@ -58,7 +58,7 @@ export class QuizService {
   cadastrarPergunta(pergunta: Pergunta): Observable<Pergunta> {
     this.refreshToken()
     return this.http.post<Pergunta>(
-      'http://localhost:8080/perguntas/cadastrar',
+      'https://quizrandom.herokuapp.com/perguntas/cadastrar',
       pergunta,
       this.token
     );
@@ -67,7 +67,7 @@ export class QuizService {
   putPergunta(pergunta: Pergunta): Observable<Pergunta> {
     this.refreshToken()
     return this.http.put<Pergunta>(
-      'http://localhost:8080/perguntas/atualizar',
+      'https://quizrandom.herokuapp.com/perguntas/atualizar',
       pergunta,
       this.token
     );

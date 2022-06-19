@@ -23,21 +23,21 @@ export class AuthService {
 
   entrar(userLogin: UserLogin): Observable<UserLogin> {
     return this.http.post<UserLogin>(
-      'http://localhost:8080/usuarios/logar',
+      'https://quizrandom.herokuapp.com/usuarios/logar',
       userLogin
     );
   }
 
   cadastrar(user: User): Observable<User> {
     return this.http.post<User>(
-      'http://localhost:8080/usuarios/cadastrar',
+      'https://quizrandom.herokuapp.com/usuarios/cadastrar',
       user
     );
   }
 
   putUser(user: User): Observable<User> {
     this.refreshToken()
-    return this.http.put<User>('http://localhost:8080/usuarios/atualizar', user, this.token)
+    return this.http.put<User>('https://quizrandom.herokuapp.com/usuarios/atualizar', user, this.token)
   }
 
   // logado() {
@@ -62,7 +62,7 @@ export class AuthService {
 
   getUserById(id: number): Observable<User> {
     this.refreshToken()
-    return this.http.get<User>(`http://localhost:8080/usuarios/${id}`, this.token)
+    return this.http.get<User>(`https://quizrandom.herokuapp.com/usuarios/${id}`, this.token)
   }
 
 }
