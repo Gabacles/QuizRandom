@@ -28,12 +28,14 @@ export class HomeComponent implements OnInit {
     //   alert('Sua sessão expirou, faça o login novamente.')
     //   this.router.navigate(['/login'])
     // }
-    if (localStorage.getItem('token') == '' || localStorage.getItem('token') == null){
+    if (localStorage.getItem('token') == ''){
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
         text: 'Seu token expirou. Faça o login novamente!',
       })
+      this.router.navigate(['/login'])
+    } else if (localStorage.getItem('token') == null) {
       this.router.navigate(['/login'])
     }
 
