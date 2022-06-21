@@ -12,6 +12,10 @@
   border-radius: 50%;
 }
 
+.tm-logo {
+  width: 200px;
+}
+
 .ml-50 {
   margin-left: 50%;
 }

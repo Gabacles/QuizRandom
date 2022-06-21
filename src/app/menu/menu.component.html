@@ -12,35 +12,35 @@
 
     <ul class="navbar-nav m-auto align-items-center">
       <li *ngIf="auth.logado() == false"
-        class="nav-item d-flex align-items-center mr-5">
+        class="nav-item d-flex align-items-center">
         <a class="nav-link fs-16 text-light" routerLink="/login">Entrar</a>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item active ml-5 mr-3">
         <a *ngIf="auth.logado() == false" class="nav-link"
-          routerLink="/login"><img class="img-fluid"
+          routerLink="/login"><img class="img-fluid tm-logo"
             src="../../assets/img/logo_quiz.png" alt=""> <span
             class="sr-only">(página atual)</span></a>
         <a *ngIf="auth.logado()" class="nav-link" routerLink="/home"><img
-            class="img-fluid ml-50" src="../../assets/img/logo_quiz.png" alt=""> <span
+            class="img-fluid ml-50 tm-logo" src="../../assets/img/logo_quiz.png" alt=""> <span
             class="sr-only">(página atual)</span></a>
       </li>
       <li *ngIf="auth.logado() == false"
-        class="nav-item d-flex align-items-center ml-5">
+        class="nav-item d-flex align-items-center">
         <a class="nav-link fs-16 text-light"
           routerLink="/cadastrar">Cadastre-se</a>
       </li>
 
     </ul>
 
-    <span class="navbar-text text-light mr-4">
+    <span class="navbar-text text-light mr-4" *ngIf="auth.logado()">
 
       <ul class="navbar-nav mr-auto d-flex align-items-center">
 
-        <li class="nav-item" *ngIf="auth.logado()">
+        <li class="nav-item">
           <img class="img-fluid tm-img" src="{{foto}}" alt="Foto do usuário">
         </li>
 
-        <li *ngIf="auth.logado()" class="nav-item dropdown">
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-light" href="#"
             id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
