@@ -37,7 +37,7 @@
       <ul class="navbar-nav mr-auto d-flex align-items-center">
 
         <li class="nav-item">
-          <img class="img-fluid tm-img" src="{{foto}}" alt="Foto do usuário">
+          <img (error)="onImgError($event)" class="img-fluid tm-img" src="{{foto}}" alt="Foto do usuário">
         </li>
 
         <li class="nav-item dropdown">

@@ -22,6 +22,10 @@ export class MenuComponent implements OnInit, AfterContentChecked {
   ngOnInit() {
   }
 
+  onImgError(event: any){
+    event.target.src = '../../assets/img/drake.jpg'
+   }
+
   ngAfterContentChecked() {
     this.nome = localStorage.getItem('nome')
     this.idUser = localStorage.getItem('id')

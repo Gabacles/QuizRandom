@@ -10,12 +10,14 @@ import Swal from 'sweetalert2';
   styleUrls: ['./jogar.component.css'],
 })
 export class JogarComponent implements OnInit {
-  finaliza = false
-  correta: string;
-  fimQuiz = false;
+  cor = '#ffffff';
+  cor2 = '#ffffff';
+  cor3 = '#ffffff';
+  cor4 = '#ffffff';
+  finaliza: boolean = false;
   questoes = 0;
   acertos = 0;
-  quiz: Quiz;
+  quiz: Quiz = new Quiz();
   perguntaApresentada = 0;
 
   constructor(
@@ -29,22 +31,25 @@ export class JogarComponent implements OnInit {
     //   this.idQuiz = obj.id;
     // });
 
-    if (localStorage.getItem('token') == '' || localStorage.getItem('token') == null){
+    if (
+      localStorage.getItem('token') == '' ||
+      localStorage.getItem('token') == null
+    ) {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
         text: 'Seu token expirou. Faça o login novamente!',
-      })
-      this.router.navigate(['/login'])
+      });
+      this.router.navigate(['/login']);
     }
 
-    let id = this.route.snapshot.params['id']
+    let id = this.route.snapshot.params['id'];
     this.findQuizById(id);
   }
 
-  onImgError(event: any){
-    event.target.src = '../../assets/img/img_erro2.png'
-   }
+  onImgError(event: any) {
+    event.target.src = '../../assets/img/img_erro2.png';
+  }
 
   findQuizById(id: number) {
     this.quizService.getQuizById(id).subscribe((resp: any) => {
@@ -53,55 +58,52 @@ export class JogarComponent implements OnInit {
     });
   }
 
-  proximaPergunta() {
-    if (this.validaCampos() == false) {
-      console.log(this.perguntaApresentada < this.questoes);
-      if (this.perguntaApresentada < this.questoes) {
-        this.resposta();
+  proximaPergunta(correta: number) {
+    if (this.perguntaApresentada < this.questoes - 1) {
+      this.resposta(correta);
+      let intervalo = setInterval(() => {
+        this.cor = '#ffffff';
+        this.cor2 = '#ffffff';
+        this.cor3 = '#ffffff';
+        this.cor4 = '#ffffff';
         this.perguntaApresentada++;
-      }
-      if (this.perguntaApresentada == this.questoes - 1) {
-        console.log('entrou no elseif');
-        this.fimQuiz = true;
-      }
-    } else {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Escolha uma opção!',
-      })
+        clearInterval(intervalo);
+      }, 600);
+    } else if (this.perguntaApresentada == this.questoes - 1) {
+      this.finalizar(correta);
     }
   }
 
-  validaCampos() {
-    let vazio = false;
-    if (this.correta == undefined || this.correta == '') {
-      vazio = true;
-      return vazio;
-    } else {
-      return vazio;
-    }
-  }
-
-  resposta() {
-    if (
-      this.quiz.pergunta[this.perguntaApresentada].correta ===
-      parseInt(this.correta)
-    ) {
+  resposta(correta: number) {
+    if (this.quiz.pergunta[this.perguntaApresentada].correta === correta) {
       this.acertos++;
+      if (correta == 1) {
+        this.cor = '#00FF7F';
+      } else if (correta == 2) {
+        this.cor2 = '#00FF7F';
+      } else if (correta == 3) {
+        this.cor3 = '#00FF7F';
+      } else if (correta == 4) {
+        this.cor4 = '#00FF7F';
+      }
+    } else {
+      if (correta == 1) {
+        this.cor = '#FF6347';
+      } else if (correta == 2) {
+        this.cor2 = '#FF6347';
+      } else if (correta == 3) {
+        this.cor3 = '#FF6347';
+      } else if (correta == 4) {
+        this.cor4 = '#FF6347';
+      }
     }
   }
 
-  finalizar() {
-    if (this.validaCampos() == false) {
-      this.resposta();
-      this.finaliza = true
-    } else {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Escolha uma opção!',
-      })
-    }
+  finalizar(correta: number) {
+    this.resposta(correta);
+    let intervalo = setInterval(() => {
+      this.finaliza = true;
+      clearInterval(intervalo);
+    }, 800);
   }
 }

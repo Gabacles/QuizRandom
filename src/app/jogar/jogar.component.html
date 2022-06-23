@@ -10,88 +10,63 @@
         </h5>
 
         <div class="row mt-3">
-          <div class="col-md-10">
-            <div class="form-group">
-              <p class="form-control">
-                {{quiz.pergunta[perguntaApresentada].resposta1}}</p>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="form-check mt-2">
-              <input [(ngModel)]="correta" class="form-check-input" type="radio"
-                name="correta" id="correta1" value="1">
-              <label class="form-check-label" for="correta1">
-              </label>
+          <div class="col-md-12">
+            <div class="form-group d-flex justify-content-center">
+              <button [ngStyle]="{'backgroundColor': cor}" (click)="proximaPergunta(1)" class="form-control btn-resp">
+                {{quiz.pergunta[perguntaApresentada].resposta1}}</button>
             </div>
           </div>
         </div>
 
         <div class="row">
-          <div class="col-md-10">
-            <div class="form-group">
-              <p class="form-control">
-                {{quiz.pergunta[perguntaApresentada].resposta2}}</p>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="form-check mt-2">
-              <input [(ngModel)]="correta" class="form-check-input" type="radio"
-                name="correta" id="correta2" value="2">
-              <label class="form-check-label" for="correta2">
-              </label>
+          <div class="col-md-12">
+            <div class="form-group d-flex justify-content-center">
+              <button [ngStyle]="{'backgroundColor': cor2}" (click)="proximaPergunta(2)" class="form-control btn-resp">
+                {{quiz.pergunta[perguntaApresentada].resposta2}}</button>
             </div>
           </div>
         </div>
 
         <div class="row">
-          <div class="col-md-10">
-            <div class="form-group">
-              <p class="form-control">
-                {{quiz.pergunta[perguntaApresentada].resposta3}}</p>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="form-check mt-2">
-              <input [(ngModel)]="correta" class="form-check-input" type="radio"
-                name="correta" id="correta3" value="3">
-              <label class="form-check-label" for="correta3">
-              </label>
+          <div class="col-md-12">
+            <div class="form-group d-flex justify-content-center">
+              <button [ngStyle]="{'backgroundColor': cor3}" (click)="proximaPergunta(3)" class="form-control btn-resp">
+                {{quiz.pergunta[perguntaApresentada].resposta3}}</button>
             </div>
           </div>
         </div>
 
         <div class="row">
-          <div class="col-md-10">
-            <div class="form-group">
-              <p class="form-control">
-                {{quiz.pergunta[perguntaApresentada].resposta4}}</p>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="form-check mt-2">
-              <input [(ngModel)]="correta" class="form-check-input" type="radio"
-                name="correta" id="correta4" value="4">
-              <label class="form-check-label" for="correta4">
-              </label>
+          <div class="col-md-12">
+            <div class="form-group d-flex justify-content-center">
+              <button [ngStyle]="{'backgroundColor': cor4}" (click)="proximaPergunta(4)" class="form-control btn-resp">
+                {{quiz.pergunta[perguntaApresentada].resposta4}}</button>
             </div>
           </div>
         </div>
         <div class="d-flex justify-content-center">
-          <button *ngIf="fimQuiz == false" (click)="proximaPergunta()"
-            class="btn btn-primary">Próxima</button>
-          <button *ngIf="fimQuiz" (click)="finalizar()"
-            class="btn btn-success">Finalizar</button>
+          <p>{{perguntaApresentada + 1}}/{{questoes}}</p>
         </div>
       </div>
 
       <div *ngIf="finaliza" class="card-body">
 
-        <div *ngIf="acertos > (questoes / 2)" class="text-center">
-          <h2>Mandou muito bem!</h2>
+        <div *ngIf="acertos == questoes" class="text-center">
+          <h2>Gabaritou!</h2>
           <h2 class="text-center text-success mt-3">{{acertos}}/{{questoes}}</h2>
         </div>
 
-        <div *ngIf="acertos < (questoes / 2)" class="text-center">
+        <div *ngIf="acertos >= ((questoes / 3)*(2)) && acertos < questoes" class="text-center">
+          <h2>Mandou muito bem!</h2>
+          <h2 class="text-center text-info mt-3">{{acertos}}/{{questoes}}</h2>
+        </div>
+
+        <div *ngIf="acertos > (questoes / 3) && acertos < ((questoes / 3)*(2))" class="text-center">
+          <h2>Meeh! Você precisa melhorar!</h2>
+          <h2 class="text-center text-warning mt-3">{{acertos}}/{{questoes}}</h2>
+        </div>
+
+        <div *ngIf="acertos <= (questoes / 3)" class="text-center">
           <h2>Sabe de nada!</h2>
           <h2 class="text-center text-danger mt-3">{{acertos}}/{{questoes}}</h2>
         </div>

@@ -6,3 +6,25 @@
   max-width: 638px;
   max-height: 358px;
 }
+
+.btn-resp {
+  border-radius: 15px;
+  width: 95%;
+}
+
+.btn-resp:hover {
+  background-color: blue;
+}
+
+.card {
+  animation: fadeInCard 1.5s 0s both;
+}
+
+@keyframes fadeInCard {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
