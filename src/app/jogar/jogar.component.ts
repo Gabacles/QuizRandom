@@ -89,13 +89,24 @@ export class JogarComponent implements OnInit {
     } else {
       if (correta == 1) {
         this.cor = '#FF6347';
-      } else if (correta == 2) {
+      } if (correta == 2) {
         this.cor2 = '#FF6347';
-      } else if (correta == 3) {
+      } if (correta == 3) {
         this.cor3 = '#FF6347';
-      } else if (correta == 4) {
+      } if (correta == 4) {
         this.cor4 = '#FF6347';
       }
+
+      if (this.quiz.pergunta[this.perguntaApresentada].correta == 1) {
+        this.cor = '#00FF7F';
+      } else if (this.quiz.pergunta[this.perguntaApresentada].correta == 2) {
+        this.cor2 = '#00FF7F';
+      } else if (this.quiz.pergunta[this.perguntaApresentada].correta == 3) {
+        this.cor3 = '#00FF7F';
+      } else if (this.quiz.pergunta[this.perguntaApresentada].correta == 4) {
+        this.cor4 = '#00FF7F';
+      }
+
     }
   }
 

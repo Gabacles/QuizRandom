@@ -12,8 +12,15 @@
   width: 95%;
 }
 
+.btn-resp:focus {
+  border-color: #cccccc;
+  outline: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
 .btn-resp:hover {
-  background-color: blue;
+  border-color: rgb(0, 106, 255);
 }
 
 .card {
