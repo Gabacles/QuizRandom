@@ -117,4 +117,8 @@ export class JogarComponent implements OnInit {
       clearInterval(intervalo);
     }, 800);
   }
+
+  jogarNovamente() {
+    location.reload()
+  }
 }
